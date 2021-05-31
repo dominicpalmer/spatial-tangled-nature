@@ -1,0 +1,45 @@
+language: cpp
+
+compiler: 
+  - g++
+
+os: 
+  - windows
+  - linux
+
+branches:
+  only:
+    - main
+
+before_install:
+  - cd stn3d
+  - mkdir lib
+  - cd lib
+
+install:
+  - git clone https://github.com/google/googletest.git -b release-1.10.0
+
+before_script:
+  - cd ../
+  - mkdir obj
+  - mkdir bin
+
+script:
+  - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then make; fi
+  - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then make tests; fi
+  - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then bin/stn3d_tests; fi
+  - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then bin/stn3d; fi
+  - if [[ "$TRAVIS_OS_NAME" = "windows" ]]; then mingw32-make; fi
+  - if [[ "$TRAVIS_OS_NAME" = "windows" ]]; then cd test; fi
+  - if [[ "$TRAVIS_OS_NAME" = "windows" ]]; then mingw32-make; fi
+  - if [[ "$TRAVIS_OS_NAME" = "windows" ]]; then cd ..; fi
+  - if [[ "$TRAVIS_OS_NAME" = "windows" ]]; then ./bin/stn3d_tests.exe; fi
+  - if [[ "$TRAVIS_OS_NAME" = "windows" ]]; then ./bin/stn3d.exe; fi
+
+after_success:
+  - BUILDCOMPLETE =true
+  - echo 'Built successfully'
+
+after_failure:
+  - BUILDCOMPLETE = false
+  - echo 'Build failure'
