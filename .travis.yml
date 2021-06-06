@@ -37,8 +37,8 @@ script:
   - if [[ "$TRAVIS_OS_NAME" = "windows" ]]; then ./bin/stn3d.exe; fi
 
 after_success:
-  - BUILDCOMPLETE =true
-  - echo 'Built successfully'
+  - BUILDCOMPLETE = true
+  - echo 'Build success'
 
 after_failure:
   - BUILDCOMPLETE = false
