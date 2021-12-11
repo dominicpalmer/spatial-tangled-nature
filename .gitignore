@@ -1,22 +1,19 @@
-stn2d/
-
 # Compiled object files
-/stn3d/obj
+/obj
 *.o
 *.obj
 
 # Executables
-/stn3d/bin
+/bin
 *.exe
 *.out
 
 # Output
-/stn3d/out
+/out
 *.a
 
 # Third party libraries
-/stn3d/lib
+/lib
 
 # Other
 .vscode
-/archive

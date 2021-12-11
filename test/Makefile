@@ -48,7 +48,7 @@ $(OBJ_DIR)/gtest.a: $(OBJ_DIR)/gtest-all.o | $(OBJ_DIR)
 $(OBJ_DIR)/gtest_main.a: $(OBJ_DIR)/gtest-all.o $(OBJ_DIR)/gtest_main.o \
 | $(OBJ_DIR)
 	$(AR) $(ARFLAGS) $@ $^
-	
+
 # Build static library stn3d.a from stn3d objects
 $(OBJ_DIR)/stn3d.a: $(STN3D_OBJ)
 	$(AR) $(ARFLAGS) $@ $^
